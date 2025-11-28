@@ -1,0 +1,78 @@
+    public static float GetDistanceEuclidean(Node nodeA, Node nodeB)
+    {
+        float dx = Mathf.Pow(nodeB.x - nodeA.x, 2);
+        float dy = Mathf.Pow(nodeB.y - nodeA.y, 2);
+        float H = Mathf.Sqrt(dx + dy);
+
+        return H;
+    }
+
+    /// <summary>
+    /// Calculates distance between two nodes using Euclidean no squareroot
+    /// </summary>
+    /// <param name="nodeA"></param>
+    /// <param name="nodeB"></param>
+    /// <returns>Float value of distance between nodeA and nodeB</returns>
+    public static float GetDistanceEuclideanNoSqr(Node nodeA, Node nodeB)
+    {
+        float dx = Mathf.Pow(nodeB.x - nodeA.x, 2);
+        float dy = Mathf.Pow(nodeB.y - nodeA.y, 2);
+        float H = dx + dy;
+
+        return H;
+    }
+
+    /// <summary>
+    /// Calculates distance between two nodes using Manhattan.
+    /// </summary>
+    /// <param name="nodeA"></param>
+    /// <param name="nodeB"></param>
+    /// <returns>Float value of distance between nodeA and nodeB</returns>
+    public static float GetDistanceManhattan(Node nodeA, Node nodeB)
+    {
+        float dx = nodeB.x - nodeA.x;
+        float dy = nodeB.y - nodeA.y;
+        float D = 1.0f;
+        float H = D * (Mathf.Abs(dx) + Mathf.Abs(dy));
+
+        return H;
+    }
+
+    /// <summary>
+    /// Calculates distance between two nodes using Diagonal.
+    /// </summary>
+    /// <param name="nodeA"></param>
+    /// <param name="nodeB"></param>
+    /// <returns>Float value of distance between nodeA and nodeB</returns>
+    public static float GetDistanceDiag(Node nodeA, Node nodeB)
+    {
+        float dx = nodeB.x - nodeA.x;
+        float dy = nodeB.y - nodeA.y;
+        float D = 1.0f;
+        float H = D * Mathf.Max(Mathf.Abs(dx), Mathf.Abs(dy));
+
+        return H;
+    }
+
+    /// <summary>
+    /// Calculates distance between two nodes using Diagonal Shortcut.
+    /// </summary>
+    /// <param name="nodeA"></param>
+    /// <param name="nodeB"></param>
+    /// <returns>Float value of distance between nodeA and nodeB</returns>
+    public static float GetDistanceDiagShort(Node nodeA, Node nodeB)
+    {
+        float dx = nodeB.x - nodeA.x;
+        float dy = nodeB.y - nodeA.y;
+        float D2 = 1.41f;
+        if (Mathf.Abs(dx) > Mathf.Abs(dy))
+        {
+            float H = D2 * Mathf.Abs(dy) + (Mathf.Abs(dx) - Mathf.Abs(dy));
+            return H;
+        }
+        else
+        {
+            float H = D2 * Mathf.Abs(dx) + (Mathf.Abs(dy) - Mathf.Abs(dx));
+            return H;
+        }
+    }
